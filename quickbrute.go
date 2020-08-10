@@ -63,10 +63,16 @@ func printLines(filePath string, values interface{}) error {
 
 func main() {
 
-	cli := clir.NewCli("Quick-Brute", "Description", "v0.0.1")
+	cli := clir.NewCli("Quick-Brute", "Automatic Service Bruteforce Tool", "v0.0.1")
 
 	var inputDomains string
+	var ports = "21,22,23,25,53,110,139,162,389,445,512,513,514,993,1433,1521,3306,3389,5432,5900,5901,6667"
+	var threads = "10"
+	var rate = "1000"
 	cli.StringFlag("d", "Path to input domains to use", &inputDomains)
+	cli.StringFlag("p", "Ports to scan", &ports)
+	cli.StringFlag("t", "Number of concurrent goroutines for resolving", &threads)
+	cli.StringFlag("rate", "Rate of scan probe requests", &rate)
 	cli.BoolFlag("v", "Enable verbose output", &verbose)
 
 	// Define action for the command
@@ -78,7 +84,7 @@ func main() {
 
 		tml.Println("[<blue>*</blue>] Starting Naabu...")
 
-		commandArgs := []string{"-hL", inputDomains, "-ports", "21,22,23,25,53,110,139,162,389,445,512,513,514,993,1433,1521,3306,3389,5432,5900,5901,6667", "-json", "-Pn", "-t", "100", "-rate", "1800"}
+		commandArgs := []string{"-hL", inputDomains, "-ports", ports, "-json", "-Pn", "-t", threads, "-rate", rate}
 		runCommand("naabu", commandArgs)
 
 		printLines("/tmp/ftp.txt", ftp)
@@ -138,8 +144,9 @@ func runCommand(command string, commandArgs []string) {
 				tml.Printf("[<blue>*</blue>] <darkgrey>%s</darkgrey>\n", scanner.Text())
 			}
 			if command == "medusa" {
-				strings.Contains(scanner.Text(), "[SUCCESS]")
-				tml.Printf("[<green>+</green>] %s\n", scanner.Text())
+				if strings.Contains(scanner.Text(), "[SUCCESS]") {
+					tml.Printf("[<green>+</green>] %s\n", scanner.Text())
+				}
 			}
 
 			if command == "naabu" {
