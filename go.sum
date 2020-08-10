@@ -1,0 +1,11 @@
+github.com/cheynewallace/tabby v1.1.0 h1:XtG/ZanoIvNZHfe0cClhWLzD/16GGF9UD7mMdWwYnCQ=
+github.com/cheynewallace/tabby v1.1.0/go.mod h1:Pba/6cUL8uYqvOc9RkyvFbHGrQ9wShyrn6/S/1OYVys=
+github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
+github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
+github.com/leaanthony/clir v1.0.4 h1:Dov2y9zWJmZr7CjaCe86lKa4b5CSxskGAt2yBkoDyiU=
+github.com/leaanthony/clir v1.0.4/go.mod h1:k/RBkdkFl18xkkACMCLt09bhiZnrGORoxmomeMvDpE0=
+github.com/liamg/tml v0.3.0 h1:Qz+R+E3BH07IgflYyB4dLijKZ+mZcKJEuC5pTNDWShc=
+github.com/liamg/tml v0.3.0/go.mod h1:0h4EAV/zBOsqI91EWONedjRpO8O0itjGJVd+wG5eC+E=
+github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
+github.com/stretchr/objx v0.1.0/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+wExME=
+github.com/stretchr/testify v1.3.0/go.mod h1:M5WIy9Dh21IEIfnGCwXGc5bZfKNJtfHm1UVUgZn+9EI=
