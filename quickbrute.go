@@ -1,7 +1,6 @@
 package main
 
 import (
-	"strings"
 	"bufio"
 	"encoding/json"
 	"errors"
@@ -10,8 +9,8 @@ import (
 	"os"
 	"os/exec"
 	"reflect"
+	"strings"
 
-	"github.com/cheynewallace/tabby"
 	"github.com/leaanthony/clir"
 	"github.com/liamg/tml"
 )
@@ -103,30 +102,6 @@ func main() {
 		printLines("/tmp/vnc.txt", vnc)
 		printLines("/tmp/vnc2.txt", vnc2)
 		printLines("/tmp/irc.txt", irc)
-		t := tabby.New()
-		t.AddHeader("HOST", "SERVICE")
-		t.AddLine(len(ftp), "ftp")
-		t.AddLine(len(ssh), "ssh")
-		t.AddLine(len(telnet), "telnet")
-		t.AddLine(len(smtp), "smtp")
-		t.AddLine(len(pop3), "pop3")
-		t.AddLine(len(smb), "smb")
-		t.AddLine(len(snmp), "snmp")
-		t.AddLine(len(ldap), "ldap")
-		t.AddLine(len(smb2), "smb2")
-		t.AddLine(len(rexec), "rexec")
-		t.AddLine(len(rlogin), "ftprlogin")
-		t.AddLine(len(rsh), "rsh")
-		t.AddLine(len(imap), "imap")
-		t.AddLine(len(mssql), "mssql")
-		t.AddLine(len(oracle), "oracle")
-		t.AddLine(len(mysql), "mysql")
-		t.AddLine(len(rdp), "rdp")
-		t.AddLine(len(postgres), "postgres")
-		t.AddLine(len(vnc), "vnc")
-		t.AddLine(len(vnc2), "vnc2")
-		t.AddLine(len(irc), "irc")
-		t.Print()
 
 		// add commands for all services
 		// add cli arguments and config for exluding specific services/only scanning for selected services
