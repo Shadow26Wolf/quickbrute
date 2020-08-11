@@ -1,6 +1,6 @@
 # quickbrute
 
-This project was pretty much a yoink of https://github.com/MS-WEB-BN/t14m4t so ima give all credit to them.
+This project was pretty much a yoink of https://github.com/MS-WEB-BN/t14m4t so ima give all credit to them. Also this uses https://github.com/projectdiscovery/naabu and https://github.com/jmk-foofus/medusa so you will need those to be installed, thanks to projectdiscovery for all of their new tools :) they are great.
 
 there is much work and refactoring to be done here, please ignore how awful i am at coding, i am not a programmer by any means. I simply saw t14m4t and wanted it to go faster (and be a little more customizable)
 
