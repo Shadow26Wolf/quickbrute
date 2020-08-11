@@ -114,60 +114,59 @@ func main() {
 		// add commands for all services
 		// add a check that checks if there are over ~200 results for a service
 		// make config file that contains wordlist paths, download wordlist from github?
-		// add more commands that allow for changing the amount of threads (could use config file for this too)
 		// add the ability to run on a schedule
 		// make it look pretty and try to make the above spam neater and faster :)
 
 		if len(ftp) != 0 {
-			tml.Printf("[<blue>*</blue<] Starting Medusa To Bruteforce %d FTP Services\n", len(ftp))
+			tml.Printf("[<blue>*</blue>] Starting Medusa To Bruteforce %d FTP Services\n", len(ftp))
 			commandArgs = []string{"-H", "/tmp/ftp.txt", "-M", "ftp", "-U", "Wordlist/ftp_u.txt", "-P", "Wordlist/ftp_p.txt", "-e", "ns", "-t", "20", "-T", "10"}
 			runCommand("medusa", commandArgs)
 		}
 
 		if len(ssh) != 0 {
-			tml.Printf("[<blue>*</blue<] Starting Medusa To Bruteforce %d SSH Services\n", len(ssh))
+			tml.Printf("[<blue>*</blue>] Starting Medusa To Bruteforce %d SSH Services\n", len(ssh))
 			commandArgs = []string{"-H", "/tmp/ssh.txt", "-M", "ssh", "-U", "Wordlist/ssh_u.txt", "-P", "Wordlist/ssh_p.txt", "-e", "ns", "-t", "20", "-T", "10"}
 			runCommand("medusa", commandArgs)
 		}
 
 		if len(telnet) != 0 {
-			tml.Printf("[<blue>*</blue<] Starting Medusa To Bruteforce %d Telnet Services\n", len(telnet))
+			tml.Printf("[<blue>*</blue>] Starting Medusa To Bruteforce %d Telnet Services\n", len(telnet))
 			commandArgs = []string{"-H", "/tmp/telnet.txt", "-M", "telnet", "-U", "Wordlist/telnet_u.txt", "-P", "Wordlist/telnet_p.txt", "-e", "ns", "-t", "20", "-T", "10"}
 			runCommand("medusa", commandArgs)
 		}
 
 		if len(smtp) != 0 {
-			tml.Printf("[<blue>*</blue<] Starting Medusa To Bruteforce %d SMTP Services\n", len(smtp))
+			tml.Printf("[<blue>*</blue>] Starting Medusa To Bruteforce %d SMTP Services\n", len(smtp))
 			commandArgs = []string{"-H", "/tmp/smtp.txt", "-M", "smtp", "-U", "Wordlist/smtp_u.txt", "-P", "Wordlist/smtp_p.txt", "-e", "ns", "-t", "20", "-T", "10"}
 			runCommand("medusa", commandArgs)
 		}
 
 		if len(pop3) != 0 {
-			tml.Printf("[<blue>*</blue<] Starting Medusa To Bruteforce %d POP3 Services\n", len(pop3))
+			tml.Printf("[<blue>*</blue>] Starting Medusa To Bruteforce %d POP3 Services\n", len(pop3))
 			commandArgs = []string{"-H", "/tmp/pop3.txt", "-M", "pop3", "-U", "Wordlist/pop_u.txt", "-P", "Wordlist/pop_p.txt", "-e", "ns", "-t", "20", "-T", "10"}
 			runCommand("medusa", commandArgs)
 		}
 
 		if len(smb) != 0 {
-			tml.Printf("[<blue>*</blue<] Starting Medusa To Bruteforce %d SMB Services\n", len(smb))
+			tml.Printf("[<blue>*</blue>] Starting Medusa To Bruteforce %d SMB Services\n", len(smb))
 			commandArgs = []string{"-H", "/tmp/smb.txt", "-M", "smbnt", "-U", "Wordlist/user.txt", "-P", "Wordlist/pass.txt", "-e", "ns", "-t", "20", "-T", "10"}
 			runCommand("medusa", commandArgs)
 		}
 
 		if len(snmp) != 0 {
-			tml.Printf("[<blue>*</blue<] Starting Medusa To Bruteforce %d SNMP Services\n", len(snmp))
+			tml.Printf("[<blue>*</blue>] Starting Medusa To Bruteforce %d SNMP Services\n", len(snmp))
 			commandArgs = []string{"-H", "/tmp/snmp.txt", "-M", "snmp", "-U", "Wordlist/snmp.txt", "-P", "Wordlist/snmp.txt", "-e", "ns", "-t", "20", "-T", "10"}
 			runCommand("medusa", commandArgs)
 		}
 
 		if len(smb2) != 0 {
-			tml.Printf("[<blue>*</blue<] Starting Medusa To Bruteforce %d SMB2 Services\n", len(smb2))
+			tml.Printf("[<blue>*</blue>] Starting Medusa To Bruteforce %d SMB2 Services\n", len(smb2))
 			commandArgs = []string{"-H", "/tmp/smb2.txt", "-M", "smbnt", "-U", "Wordlist/user.txt", "-P", "Wordlist/pass.txt", "-e", "ns", "-t", "20", "-T", "10"}
 			runCommand("medusa", commandArgs)
 		}
 
 		if len(rexec) != 0 {
-			tml.Printf("[<blue>*</blue<] Starting Medusa To Bruteforce %d Rexec Services\n", len(rexec))
+			tml.Printf("[<blue>*</blue>] Starting Medusa To Bruteforce %d Rexec Services\n", len(rexec))
 			commandArgs = []string{"-H", "/tmp/rexec.txt", "-M", "rexec", "-U", "Wordlist/user.txt", "-P", "Wordlist/pass.txt", "-e", "ns", "-t", "20", "-T", "10"}
 			runCommand("medusa", commandArgs)
 		}
