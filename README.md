@@ -6,6 +6,10 @@ there is much work and refactoring to be done here, please ignore how awful i am
 
 right now the project only has support for ssh, although im probably gonna add support for the rest of the services tommorow when i wake up. also i yoinked t14m4t's wordlist files i hope they dont mind :) 
 
+im releasing this right now as i would like to see if anyone would actually find this useful lol.
+
+p.s i would just `git clone` this repo and use `go run` because i havent sorted downloading the wordlist yet. anyway, have fun with this i guess
+
 use `quickbrute -help` to see usage
 
 :)
