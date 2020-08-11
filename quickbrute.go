@@ -46,6 +46,9 @@ var irc []string
 var verbose = false
 
 func printLines(filePath string, values interface{}) error {
+	if values == nil {
+		return nil
+	}
 	f, err := os.Create(filePath)
 	if err != nil {
 		return err
@@ -110,9 +113,8 @@ func main() {
 		printLines("/tmp/irc.txt", irc)
 
 		// add commands for all services
-		// add cli arguments and config for exluding specific services/only scanning for selected services
 		// add a check that checks if there are over ~200 results for a service
-		// make config file that contains wordlist paths
+		// make config file that contains wordlist paths, download wordlist from github?
 		// add more commands that allow for changing the amount of threads (could use config file for this too)
 		// add the ability to run on a schedule
 		// make it look pretty and try to make the above spam neater and faster :)
