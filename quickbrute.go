@@ -66,10 +66,10 @@ func printLines(filePath string, values interface{}) error {
 
 func main() {
 
-	cli := clir.NewCli("Quick-Brute", "Automatic Service Bruteforce Tool", "v0.0.1")
+	cli := clir.NewCli("Quick-Brute", "Automatic Service Bruteforce Tool", "v0.0.2")
 
 	var inputDomains string
-	var ports = "21,22,23,25,53,110,139,162,389,445,512,513,514,993,1433,1521,3306,3389,5432,5900,5901,6667"
+	var ports = "21,22,23,25,53,110,139,162,445,512,513,514,993,1433,1521,3306,3389,5432,5900,5901,6667"
 	var threads = "10"
 	var rate = "1000"
 	cli.StringFlag("d", "Path to input domains to use", &inputDomains)
@@ -97,7 +97,6 @@ func main() {
 		printLines("/tmp/pop3.txt", pop3)
 		printLines("/tmp/smb.txt", smb)
 		printLines("/tmp/snmp.txt", snmp)
-		printLines("/tmp/ldap.txt", ldap)
 		printLines("/tmp/smb2.txt", smb2)
 		printLines("/tmp/rexec.txt", rexec)
 		printLines("/tmp/rlogin.txt", rlogin)
@@ -119,8 +118,60 @@ func main() {
 		// add the ability to run on a schedule
 		// make it look pretty and try to make the above spam neater and faster :)
 
-		commandArgs = []string{"-H", "/tmp/ssh.txt", "-M", "ssh", "-U", "Wordlist/ssh_u.txt", "-P", "Wordlist/ssh_p.txt", "-e", "ns", "-t", "20", "-T", "10", "-F"}
-		runCommand("medusa", commandArgs)
+		if len(ftp) != 0 {
+			tml.Printf("[<blue>*</blue<] Starting Medusa To Bruteforce %d FTP Services\n", len(ftp))
+			commandArgs = []string{"-H", "/tmp/ftp.txt", "-M", "ftp", "-U", "Wordlist/ftp_u.txt", "-P", "Wordlist/ftp_p.txt", "-e", "ns", "-t", "20", "-T", "10"}
+			runCommand("medusa", commandArgs)
+		}
+
+		if len(ssh) != 0 {
+			tml.Printf("[<blue>*</blue<] Starting Medusa To Bruteforce %d SSH Services\n", len(ssh))
+			commandArgs = []string{"-H", "/tmp/ssh.txt", "-M", "ssh", "-U", "Wordlist/ssh_u.txt", "-P", "Wordlist/ssh_p.txt", "-e", "ns", "-t", "20", "-T", "10"}
+			runCommand("medusa", commandArgs)
+		}
+
+		if len(telnet) != 0 {
+			tml.Printf("[<blue>*</blue<] Starting Medusa To Bruteforce %d Telnet Services\n", len(telnet))
+			commandArgs = []string{"-H", "/tmp/telnet.txt", "-M", "telnet", "-U", "Wordlist/telnet_u.txt", "-P", "Wordlist/telnet_p.txt", "-e", "ns", "-t", "20", "-T", "10"}
+			runCommand("medusa", commandArgs)
+		}
+
+		if len(smtp) != 0 {
+			tml.Printf("[<blue>*</blue<] Starting Medusa To Bruteforce %d SMTP Services\n", len(smtp))
+			commandArgs = []string{"-H", "/tmp/smtp.txt", "-M", "smtp", "-U", "Wordlist/smtp_u.txt", "-P", "Wordlist/smtp_p.txt", "-e", "ns", "-t", "20", "-T", "10"}
+			runCommand("medusa", commandArgs)
+		}
+
+		if len(pop3) != 0 {
+			tml.Printf("[<blue>*</blue<] Starting Medusa To Bruteforce %d POP3 Services\n", len(pop3))
+			commandArgs = []string{"-H", "/tmp/pop3.txt", "-M", "pop3", "-U", "Wordlist/pop_u.txt", "-P", "Wordlist/pop_p.txt", "-e", "ns", "-t", "20", "-T", "10"}
+			runCommand("medusa", commandArgs)
+		}
+
+		if len(smb) != 0 {
+			tml.Printf("[<blue>*</blue<] Starting Medusa To Bruteforce %d SMB Services\n", len(smb))
+			commandArgs = []string{"-H", "/tmp/smb.txt", "-M", "smbnt", "-U", "Wordlist/user.txt", "-P", "Wordlist/pass.txt", "-e", "ns", "-t", "20", "-T", "10"}
+			runCommand("medusa", commandArgs)
+		}
+
+		if len(snmp) != 0 {
+			tml.Printf("[<blue>*</blue<] Starting Medusa To Bruteforce %d SNMP Services\n", len(snmp))
+			commandArgs = []string{"-H", "/tmp/snmp.txt", "-M", "snmp", "-U", "Wordlist/snmp.txt", "-P", "Wordlist/snmp.txt", "-e", "ns", "-t", "20", "-T", "10"}
+			runCommand("medusa", commandArgs)
+		}
+
+		if len(smb2) != 0 {
+			tml.Printf("[<blue>*</blue<] Starting Medusa To Bruteforce %d SMB2 Services\n", len(smb2))
+			commandArgs = []string{"-H", "/tmp/smb2.txt", "-M", "smbnt", "-U", "Wordlist/user.txt", "-P", "Wordlist/pass.txt", "-e", "ns", "-t", "20", "-T", "10"}
+			runCommand("medusa", commandArgs)
+		}
+
+		if len(rexec) != 0 {
+			tml.Printf("[<blue>*</blue<] Starting Medusa To Bruteforce %d Rexec Services\n", len(rexec))
+			commandArgs = []string{"-H", "/tmp/rexec.txt", "-M", "rexec", "-U", "Wordlist/user.txt", "-P", "Wordlist/pass.txt", "-e", "ns", "-t", "20", "-T", "10"}
+			runCommand("medusa", commandArgs)
+		}
+
 		return nil
 	})
 	// Run the application
@@ -175,9 +226,6 @@ func runCommand(command string, commandArgs []string) {
 				}
 				if output.Port == 162 {
 					snmp = append(snmp, output.Host)
-				}
-				if output.Port == 389 {
-					ldap = append(ldap, output.Host)
 				}
 				if output.Port == 445 {
 					smb2 = append(smb2, output.Host)
